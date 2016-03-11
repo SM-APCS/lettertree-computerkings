@@ -10,16 +10,22 @@ public class LetterTree {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        BSTree tree = new BSTree();
-        tree.add(new char('A'));
-        tree.add(new char('B'));
-        tree.add(new char('C'));
-        tree.add(new char('D'));
-        tree.add(new char('E'));
-        tree.add(new char('F'));
-        
-        System.out.println(tree);
-        
+        TreeNode a = new TreeNode("a", null, null);
+        TreeNode b = new TreeNode("b", null, null);
+        TreeNode c = new TreeNode("c", a, b);
+        TreeNode d = new TreeNode("d", null, null);
+        TreeNode e = new TreeNode("e", c, d);
+
+        postorder(e);
     }
-    
+    private static void postorder (TreeNode current)
+   {
+      if (current.getLeft() != null)
+         postorder(current.getLeft());
+
+      if (current.getRight() != null)
+         postorder(current.getRight());
+
+      System.out.println(current.getValue());
+   }
 }
